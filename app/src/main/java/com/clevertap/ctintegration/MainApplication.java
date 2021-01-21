@@ -20,6 +20,7 @@ public class MainApplication extends Application implements CTPushAmpListener {
 
     public static final String APP_ID = "2882303761518655186";
     public static final String APP_KEY = "5191834634520";
+    CleverTapAPI clevertap = CleverTapAPI.getDefaultInstance(getApplicationContext());
 
     @Override
     public void onCreate() {
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements CTPushAmpListener {
         if(shouldInit()) {
             MiPushClient.registerPush(this, APP_ID, APP_KEY);
         }
+        clevertap.setCTPushAmpListener(this);
     }
 
     private boolean shouldInit() {
